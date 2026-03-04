@@ -7,34 +7,95 @@
     <messages>
 
     <message id="13000" name="RFD_TEST">
-            <description>RFD TEST MAVLINK PAKETI</description>
-	        <field type="uint8_t" name="RANDOM_DEGER"/>
+        <description>RFD TEST MAVLINK PAKETI</description>
+        <field type="uint8_t" name="RANDOM_DEGER"/>
     </message>
 
     <message id="13001" name="LAST_ENEMY_POSITION">
-            <description>Last known GPS coordinates of the target enemy.</description>
-            <field type="uint8_t" name="target_system">System ID of the vehicle.</field>
-            <field type="uint8_t" name="target_component">Component ID of the vehicle.</field>
-            <field type="int32_t" name="lat" units="degE7">Latitude (WGS84)</field>
-            <field type="int32_t" name="lon" units="degE7">Longitude (WGS84)</field>
-            <field type="float" name="alt" units="m">Altitude (MSL)</field>
+        <description>Last known GPS coordinates of the target enemy.</description>
+        <field type="uint8_t" name="target_system">System ID of the vehicle.</field>
+        <field type="uint8_t" name="target_component">Component ID of the vehicle.</field>
+        <field type="int32_t" name="lat" units="degE7">Latitude (WGS84)</field>
+        <field type="int32_t" name="lon" units="degE7">Longitude (WGS84)</field>
     </message>
 
     <message id="13002" name="DETECTED_ENEMY">
-            <description>Pixel coordinates of the detected enemy in the camera frame.</description>
-            <field type="uint16_t" name="pixel_x">X coordinate in pixels (front camera).</field>
-            <field type="uint16_t" name="pixel_y">Y coordinate in pixels (front camera).</field>
-            <field type="float" name="confidence">Detection confidence (0.0 to 1.0).</field>
+        <description>Pixel coordinates of the detected enemy in the camera frame.</description>
+        <field type="uint16_t" name="pixel_x">X coordinate in pixels (front camera).</field>
+        <field type="uint16_t" name="pixel_y">Y coordinate in pixels (front camera).</field>
+        <field type="float" name="confidence">Detection confidence (0.0 to 1.0).</field>
     </message>
 
     <message id="13003" name="LOCKING_DONE">
-            <description>Indicates that a minimum of 4 seconds of stable detection is achieved.</description>
-            <field type="uint8_t" name="target_system">System ID.</field>
-            <field type="uint8_t" name="status">0: Searching, 1: Locked.</field>
+        <description>Indicates that a minimum of 4 seconds of stable detection is achieved.</description>
+        <field type="uint8_t" name="target_system">System ID.</field>
+        <field type="uint8_t" name="status">0: Searching, 1: Locked.</field>
     </message>
 
 
 
+
+
+    <message id="13004" name="ENEMY_GPS_PACKET">
+        <description>Yaklaşım için seçilen rakibe ait konum bilgileri</description>
+        <field type="int32_t" name="enemy_latitude" units="degE7">rakip enlem koordinat verisi</field>
+        <field type="int32_t" name="enemy_longitude" units="degE7">rakip boylam koordinat verisi</field>
+        <field type="uint8_t" name="enemy_altitude" units="m">rakip irtifa verisi</field>
+    </message>
+
+    <message id="13005" name="ENEMY_PIXEL_PACKET">
+        <description>Kamerada tespit edilen rakibe ait kamera üzerindeki pixel-konum bilgileri</description>
+        <field type="uint16_t" name="kamera_pixel_x">kamerada tespit edilen rakibin düşey pixel konumu </field>
+        <field type="uint16_t" name="kamera_pixel_y">kamerada tespit edilen rakibin yatay pixel konumu </field>
+
+    </message>
+
+    <message id="13006" name="ENEMY_DETECTION_STATUS">
+        <description>Kamera tespitinin mevcut durum bilgileri</description>
+        <field type="uint16_t" name="gecen_takip_süresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field> 
+        <field type="uint8_t" name="otonom_bool">otonom veya manuel kilitlenme göstergesi (1 yada 0) </field>
+        <field type="uint16_t" name="rakip_pixel_x">kamerada tespit edilen rakibin düşey pixel konumu </field>
+        <field type="uint16_t" name="rakip_pixel_y">kamerada tespit edilen rakibin yatay pixel konumu </field>
+        <field type="uint8_t" name="model_confidence">görüntü işleme modelinin doğruluk oranının 100 ile çarpılmış hali </field>
+    </message>
+
+    <message id="13007" name="ENEMY_DETECTED_CLOCK">
+        <description>4 saniyelik kilitlenme süresinin bitişi</description>
+        <field type="uint8_t" name="kilitlenme_saat"> kilitlenme bitiş süresinin saati</field> 
+        <field type="uint8_t" name="kilitlenme_dakika">kilitlenme bitiş süresinin dakikası </field>
+        <field type="uint8_t" name="kilitlenme_saniye">kilitlenme bitiş süresinin saniyesi</field>
+        <field type="uint16_t" name="kilitlenme_milisaniye">kilitlenme bitiş süresinin milisaniyesi</field>
+        <field type="uint8_t" name="otonom_kilitlenme">kilitlenme otonom olma durumu</field>
+    </message>
+
+    <message id="13008" name="QR_LOCATION_PACKET">
+        <description>QR kodun serili olduğu alanın koordinatlarını taşıyan paket</description>
+        <field type="int32_t" name="qr_latitude" units="degE7">QR kodun enlem koordinatı</field>
+        <field type="int32_t" name="qr_longitude" units="degE7">QR kodun boylam koordinatı</field>
+    </message>
+
+    <message id="13009" name="RPI_CONTROL_PACKET">
+        <description>Raspberry Pi'ye komut verebilmek için kullanılacak paket</description>
+        <field type="int8_t" name="command_code">Raspberry'ye verilecek önceden hazırlanmış komut kodları</field>
+        <field type="int8_t" name="parametre_1">İhtiyaç halinde girilecek komut parametreleri-1</field>
+        <field type="int8_t" name="parametre_2">İhtiyaç halinde girilecek komut parametreleri-2</field>
+        <field type="int8_t" name="parametre_3">İhtiyaç halinde girilecek komut parametreleri-3</field>
+    </message>
+
+    <message id="13010" name="KAMIKAZE_STATUS_PACKET">
+        <description>Kamikaze başlangıç-bitiş ve QR içeriğinin taşıyan paket</description>
+        <field type="uint8_t" name="kamikaze_baslangic_saat"> kamikaze başlangıç süresinin saati</field> 
+        <field type="uint8_t" name="kamikaze_baslangic_dakika">kamikaze başlangıç süresinin dakikası </field>
+        <field type="uint8_t" name="kamikaze_baslangic_saniye">kamikaze başlangıç süresinin saniyesi</field>
+        <field type="uint16_t" name="kamikaze_baslangic_milisaniye">kamikaze başlangıç süresinin milisaniyesi</field>
+
+        <field type="uint8_t" name="kamikaze_bitis_saat"> kamikaze bitiş süresinin saati</field> 
+        <field type="uint8_t" name="kamikaze_bitis_dakika">kamikaze bitiş süresinin dakikası </field>
+        <field type="uint8_t" name="kamikaze_bitis_saniye">kamikaze bitiş süresinin saniyesi</field>
+        <field type="uint16_t" name="kamikaze_bitis_milisaniye">kamikaze bitiş süresinin milisaniyesi</field>
+
+        <field type="char[20]" name="qr_metni">QR Verisinin içeriği / okunamamışsa "invalid_qr" </field>
+    </message>
 
 
     </messages>
