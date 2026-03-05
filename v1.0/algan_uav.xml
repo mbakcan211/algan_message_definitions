@@ -52,7 +52,7 @@
 
     <message id="13006" name="ENEMY_DETECTION_STATUS">
         <description>Kamera tespitinin mevcut durum bilgileri</description>
-        <field type="uint16_t" name="gecen_takip_süresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field> 
+        <field type="uint16_t" name="gecen_takip_süresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field>
         <field type="uint8_t" name="otonom_bool">otonom veya manuel kilitlenme göstergesi (1 yada 0) </field>
         <field type="uint16_t" name="rakip_pixel_x">kamerada tespit edilen rakibin düşey pixel konumu </field>
         <field type="uint16_t" name="rakip_pixel_y">kamerada tespit edilen rakibin yatay pixel konumu </field>
@@ -61,7 +61,7 @@
 
     <message id="13007" name="ENEMY_DETECTED_CLOCK">
         <description>4 saniyelik kilitlenme süresinin bitişi</description>
-        <field type="uint8_t" name="kilitlenme_saat"> kilitlenme bitiş süresinin saati</field> 
+        <field type="uint8_t" name="kilitlenme_saat"> kilitlenme bitiş süresinin saati</field>
         <field type="uint8_t" name="kilitlenme_dakika">kilitlenme bitiş süresinin dakikası </field>
         <field type="uint8_t" name="kilitlenme_saniye">kilitlenme bitiş süresinin saniyesi</field>
         <field type="uint16_t" name="kilitlenme_milisaniye">kilitlenme bitiş süresinin milisaniyesi</field>
@@ -84,12 +84,12 @@
 
     <message id="13010" name="KAMIKAZE_STATUS_PACKET">
         <description>Kamikaze başlangıç-bitiş ve QR içeriğinin taşıyan paket</description>
-        <field type="uint8_t" name="kamikaze_baslangic_saat"> kamikaze başlangıç süresinin saati</field> 
+        <field type="uint8_t" name="kamikaze_baslangic_saat"> kamikaze başlangıç süresinin saati</field>
         <field type="uint8_t" name="kamikaze_baslangic_dakika">kamikaze başlangıç süresinin dakikası </field>
         <field type="uint8_t" name="kamikaze_baslangic_saniye">kamikaze başlangıç süresinin saniyesi</field>
         <field type="uint16_t" name="kamikaze_baslangic_milisaniye">kamikaze başlangıç süresinin milisaniyesi</field>
 
-        <field type="uint8_t" name="kamikaze_bitis_saat"> kamikaze bitiş süresinin saati</field> 
+        <field type="uint8_t" name="kamikaze_bitis_saat"> kamikaze bitiş süresinin saati</field>
         <field type="uint8_t" name="kamikaze_bitis_dakika">kamikaze bitiş süresinin dakikası </field>
         <field type="uint8_t" name="kamikaze_bitis_saniye">kamikaze bitiş süresinin saniyesi</field>
         <field type="uint16_t" name="kamikaze_bitis_milisaniye">kamikaze bitiş süresinin milisaniyesi</field>
