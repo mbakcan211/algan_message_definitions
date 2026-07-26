@@ -30,8 +30,8 @@
         <description>Kamera tespitinin mevcut durum bilgileri</description>
         <field type="uint16_t" name="gecen_takip_suresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field>
         <field type="uint8_t" name="otonom_bool">otonom veya manuel kilitlenme göstergesi (1 yada 0) </field>
-        <field type="uint16_t" name="rakip_pixel_x">kamerada tespit edilen rakibin düşey pixel konumu </field>
-        <field type="uint16_t" name="rakip_pixel_y">kamerada tespit edilen rakibin yatay pixel konumu </field>
+        <field type="float" name="rakip_pixel_x">kamerada tespit edilen rakibin ekrana göre düşey pixel konumu oranı </field>
+        <field type="float" name="rakip_pixel_y">kamerada tespit edilen rakibin ekrana göre yatay pixel konum oranı </field>
         <field type="uint8_t" name="model_confidence">görüntü işleme modelinin doğruluk oranının 100 ile çarpılmış hali </field>
     </message>
 
@@ -71,6 +71,16 @@
         <field type="uint16_t" name="kamikaze_bitis_milisaniye">kamikaze bitiş süresinin milisaniyesi</field>
 
         <field type="char[20]" name="qr_metni">QR Verisinin içeriği / okunamamışsa "invalid_qr" </field>
+    </message>
+
+    <message id="13011" name="APF_ROUTE_PACKET">
+        <description>Yer kontrol istasyonunun Artificial Potential Fields + Ramer-Douglas-Peucker ile hesapladığı güvenli rotadan bir sonraki iki nokta (rakip/hedef konumu DEĞİLDİR)</description>
+        <field type="float" name="current_latitude" units="deg">Rotadaki mevcut hedef nokta - enlem</field>
+        <field type="float" name="current_longitude" units="deg">Rotadaki mevcut hedef nokta - boylam</field>
+        <field type="float" name="current_altitude" units="m">Rotadaki mevcut hedef nokta - irtifa</field>
+        <field type="float" name="next_latitude" units="deg">Rotadaki bir sonraki hedef nokta - enlem</field>
+        <field type="float" name="next_longitude" units="deg">Rotadaki bir sonraki hedef nokta - boylam</field>
+        <field type="float" name="next_altitude" units="m">Rotadaki bir sonraki hedef nokta - irtifa</field>
     </message>
 
     </messages>
