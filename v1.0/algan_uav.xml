@@ -28,7 +28,7 @@
 
     <message id="13006" name="ENEMY_DETECTION_STATUS">
         <description>Kamera tespitinin mevcut durum bilgileri</description>
-        <field type="uint16_t" name="gecen_takip_süresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field>
+        <field type="uint16_t" name="gecen_takip_suresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field>
         <field type="uint8_t" name="otonom_bool">otonom veya manuel kilitlenme göstergesi (1 yada 0) </field>
         <field type="uint16_t" name="rakip_pixel_x">kamerada tespit edilen rakibin düşey pixel konumu </field>
         <field type="uint16_t" name="rakip_pixel_y">kamerada tespit edilen rakibin yatay pixel konumu </field>
