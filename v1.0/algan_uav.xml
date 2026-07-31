@@ -17,6 +17,7 @@
         <field type="float" name="enemy_latitude" units="degE7">rakip enlem koordinat verisi</field>
         <field type="float" name="enemy_longitude" units="degE7">rakip boylam koordinat verisi</field>
         <field type="float" name="enemy_altitude" units="m">rakip irtifa verisi</field>
+        <field type="float" name="speed" units="m/s">rakip hız verisi</field>
     </message>
 
     <message id="13005" name="ENEMY_PIXEL_PACKET">
