@@ -82,6 +82,7 @@
         <field type="float" name="next_latitude" units="deg">Rotadaki bir sonraki hedef nokta - enlem</field>
         <field type="float" name="next_longitude" units="deg">Rotadaki bir sonraki hedef nokta - boylam</field>
         <field type="float" name="next_altitude" units="m">Rotadaki bir sonraki hedef nokta - irtifa</field>
+        <field type="float" name="speed" units="m/s">Rota segmentinde uygulanacak hız verisi</field>
     </message>
 
     </messages>
