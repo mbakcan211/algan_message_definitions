@@ -74,6 +74,17 @@
         <field type="char[20]" name="qr_metni">QR Verisinin içeriği / okunamamışsa "invalid_qr" </field>
     </message>
 
+    <message id="13012" name="KAMIKAZE_PHASE">
+        <description>Otopilotun onboard Diving (kamikaze dalış) modunun anlık yöntem/faz durumu - navigator/diving.cpp içindeki kamikaze_phase uORB topic'inin MAVLink karşılığı</description>
+        <field type="uint8_t" name="kkz_method">Aktif dalış yöntemi: 0=NONE(custom failsafe), 1=TEST, 2=VAG</field>
+        <field type="uint8_t" name="intended_test_phase">Test yöntemi için hedeflenen faz (curr_test_phase ile aynı enum)</field>
+        <field type="uint8_t" name="curr_test_phase">Test yöntemi mevcut fazı: 0=NONE, 1=APPROACH_LOITER, 2=APPROACH_QR, 3=DIVE, 4=RESCUE, 5=DONE, 6=INVALID</field>
+        <field type="uint8_t" name="intended_vag_phase">VAG yöntemi için hedeflenen faz (curr_vag_phase ile aynı enum)</field>
+        <field type="uint8_t" name="curr_vag_phase">VAG yöntemi mevcut fazı: 0=NONE, 1=APPROACH_TO_PREDIVE, 2=LOITER, 3=DIVE, 4=RESCUE, 5=DONE, 6=INVALID</field>
+        <field type="uint8_t" name="is_smooth_rescue">Yumuşak kurtarış (smooth rescue) tetiklendi mi (1) yoksa değil mi (0)</field>
+        <field type="float" name="smooth_rescue_pitch_up" units="deg">Yumuşak kurtarış sırasında uygulanan yukarı pitch açısı</field>
+    </message>
+
     <message id="13011" name="APF_ROUTE_PACKET">
         <description>Yer kontrol istasyonunun Artificial Potential Fields + Ramer-Douglas-Peucker ile hesapladığı güvenli rotadan bir sonraki iki nokta (rakip/hedef konumu DEĞİLDİR)</description>
         <field type="float" name="current_latitude" units="deg">Rotadaki mevcut hedef nokta - enlem</field>
