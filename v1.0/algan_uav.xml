@@ -31,8 +31,8 @@
         <description>Kamera tespitinin mevcut durum bilgileri</description>
         <field type="uint16_t" name="gecen_takip_suresi_milisaniye"> milisaniye cinsinden mevcut kilitlenme süresi</field>
         <field type="uint8_t" name="otonom_bool">otonom veya manuel kilitlenme göstergesi (1 yada 0) </field>
-        <field type="float" name="rakip_pixel_x">kamerada tespit edilen rakibin ekrana göre düşey pixel konumu oranı </field>
-        <field type="float" name="rakip_pixel_y">kamerada tespit edilen rakibin ekrana göre yatay pixel konum oranı </field>
+        <field type="float" name="rakip_pixel_x">kamerada tespit edilen rakibin ham piksel X koordinatı (oran DEĞİL - ör. 640 genişliğinde bir görüntüde 0-640 arası); merkez referanslı normalizasyon firmware tarafında yapılır</field>
+        <field type="float" name="rakip_pixel_y">kamerada tespit edilen rakibin ham piksel Y koordinatı (oran DEĞİL - ör. 480 yükseklikte bir görüntüde 0-480 arası); merkez referanslı normalizasyon firmware tarafında yapılır</field>
         <field type="uint8_t" name="model_confidence">görüntü işleme modelinin doğruluk oranının 100 ile çarpılmış hali </field>
     </message>
 
@@ -74,6 +74,17 @@
         <field type="char[20]" name="qr_metni">QR Verisinin içeriği / okunamamışsa "invalid_qr" </field>
     </message>
 
+    <message id="13012" name="KAMIKAZE_PHASE">
+        <description>Otopilotun onboard Diving (kamikaze dalış) modunun anlık yöntem/faz durumu - navigator/diving.cpp içindeki kamikaze_phase uORB topic'inin MAVLink karşılığı</description>
+        <field type="uint8_t" name="kkz_method">Aktif dalış yöntemi: 0=NONE(custom failsafe), 1=TEST, 2=VAG</field>
+        <field type="uint8_t" name="intended_test_phase">Test yöntemi için hedeflenen faz (curr_test_phase ile aynı enum)</field>
+        <field type="uint8_t" name="curr_test_phase">Test yöntemi mevcut fazı: 0=NONE, 1=APPROACH_LOITER, 2=APPROACH_QR, 3=DIVE, 4=RESCUE, 5=DONE, 6=INVALID</field>
+        <field type="uint8_t" name="intended_vag_phase">VAG yöntemi için hedeflenen faz (curr_vag_phase ile aynı enum)</field>
+        <field type="uint8_t" name="curr_vag_phase">VAG yöntemi mevcut fazı: 0=NONE, 1=APPROACH_TO_PREDIVE, 2=LOITER, 3=DIVE, 4=RESCUE, 5=DONE, 6=INVALID</field>
+        <field type="uint8_t" name="is_smooth_rescue">Yumuşak kurtarış (smooth rescue) tetiklendi mi (1) yoksa değil mi (0)</field>
+        <field type="float" name="smooth_rescue_pitch_up" units="deg">Yumuşak kurtarış sırasında uygulanan yukarı pitch açısı</field>
+    </message>
+
     <message id="13011" name="APF_ROUTE_PACKET">
         <description>Yer kontrol istasyonunun Artificial Potential Fields + Ramer-Douglas-Peucker ile hesapladığı güvenli rotadan bir sonraki iki nokta (rakip/hedef konumu DEĞİLDİR)</description>
         <field type="float" name="current_latitude" units="deg">Rotadaki mevcut hedef nokta - enlem</field>
@@ -83,6 +94,11 @@
         <field type="float" name="next_longitude" units="deg">Rotadaki bir sonraki hedef nokta - boylam</field>
         <field type="float" name="next_altitude" units="m">Rotadaki bir sonraki hedef nokta - irtifa</field>
         <field type="float" name="speed" units="m/s">Rota segmentinde uygulanacak hız verisi</field>
+    </message>
+
+    <message id="13013" name="TRACKING_SUBSTATE">
+        <description>Otopilotun onboard Tracking (Kilitlenme) modunun anlık alt-durumu - navigator/tracking.cpp içindeki tracking_substate uORB topic'inin MAVLink karşılığı</description>
+        <field type="uint8_t" name="state">Kilitlenme alt-durumu: 0=IDLE, 1=SEARCHING, 2=GPS_ACQUISITION, 3=VISUAL_TRACKING, 4=LOCKED_LOITER, 5=APF_ROUTE_TRACKING</field>
     </message>
 
     </messages>
